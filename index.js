@@ -6,6 +6,22 @@ const port = 3000;
 
 
 // route
+app.get('/', async (req, res) => {
+    res.json({
+        author : 'GustiRafi',
+        source : 'https://otakudesu.lol',
+        endpoint : {
+            'get anime terbaru' : '/anime',
+            'get complete anime' : '/complete-anime',
+            'get all genre' : '/genre',
+            'get anime by genre' : '/genre/slug',
+            'get detail anime' : '/anime/slug',
+            'stream anime' : '/stream/eps',
+            'search' : '/search/nama',
+        }
+    });
+});
+
 app.get('/anime', async (req, res) => {
     const animeList = await getAnimeList();
     res.json(animeList);
