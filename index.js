@@ -8,16 +8,16 @@ const port = 3000;
 // route
 app.get('/', async (req, res) => {
     res.json({
-        author : 'GustiRafi',
-        source : 'https://otakudesu.lol',
-        endpoint : {
-            'get anime terbaru' : '/anime',
-            'get complete anime' : '/complete-anime',
-            'get all genre' : '/genre',
-            'get anime by genre' : '/genre/slug',
-            'get detail anime' : '/anime/slug',
-            'stream anime' : '/stream/eps',
-            'search' : '/search/nama',
+        author: 'GustiRafi',
+        source: 'https://otakudesu.lol',
+        endpoint: {
+            'get anime terbaru': '/anime',
+            'get complete anime': '/complete-anime',
+            'get all genre': '/genre',
+            'get anime by genre': '/genre/slug',
+            'get detail anime': '/anime/slug',
+            'stream anime': '/stream/eps',
+            'search': '/search/nama',
         }
     });
 });
@@ -174,16 +174,33 @@ async function getAnimeById(slug) {
     const title = $('.jdlrx').text();
     const sinopsis = $('.sinopc').text();
     const imageUrl = $('.fotoanime img').attr('src');
+    const jpn = $('.venser').find('.infozingle p:nth-child(2)').text();
+    const skor = $('.venser').find('.infozingle p:nth-child(3)').text();
+    const status = $('.venser').find('.infozingle p:nth-child(6)').text();
+    const genre = $('.venser').find('.infozingle p:nth-child(11)').text();
     const epslist = [];
     $('.episodelist ul li').each((i, el) => {
         const id = i + 1;
         const title = $(el).find('a').text();
+        const numbers = title.match(/\d+/g);
         const episode = $(el).find('a').attr("href").split("/")[4];
-        epslist.push({id : id, title : title, episode : episode});
+        if (numbers) {
+            const extractedNumber = numbers[0];
+            epslist.push({
+                id: id,
+                title: title,
+                episode: episode,
+                epsNumber: extractedNumber,
+            });
+        }
     });
     const byidlist = {
         title,
         imageUrl,
+        skor,
+        jpn,
+        status,
+        genre,
         sinopsis,
         epslist,
     }
@@ -204,8 +221,17 @@ async function getAnimeStream(eps) {
     $('.keyingpost li').each((i, el) => {
         const id = i + 1;
         const title = $(el).find('a').text();
+        const numbers = title.match(/\d+/g);
         const episode = $(el).find('a').attr("href").split("/")[4];
-        epslist.push({id : id, title : title, episode : episode});
+        if (numbers) {
+            const extractedNumber = numbers[0];
+            epslist.push({
+                id: id,
+                title: title,
+                episode: episode,
+                epsNumber: extractedNumber,
+            });
+        }
     });
     const arr = {
         title,
