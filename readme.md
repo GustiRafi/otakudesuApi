@@ -1,6 +1,6 @@
 # Otakudesu Api by GustiRafi
 
-final resource : [otakudesuapibygustirafi.wonderfullyogyakarta.com](http://otakudesuapibygustirafi.wonderfullyogyakarta.com/anime)
+final result : [otakudesuapibygustirafi.wonderfullyogyakarta.com](http://otakudesuapibygustirafi.wonderfullyogyakarta.com/anime)
 
 ## Deskripsi
 
