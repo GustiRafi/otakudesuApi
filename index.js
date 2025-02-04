@@ -9,7 +9,7 @@ const port = 3000;
 app.get('/', async (req, res) => {
     res.json({
         author: 'GustiRafi',
-        source: 'https://otakudesu.lol',
+        source: 'https://otakudesu.cloud',
         endpoint: {
             'get anime terbaru': '/anime',
             'get complete anime': '/complete-anime',
